@@ -12,12 +12,23 @@ function mainOnLoad() {
 	out += `<td>${str.fio}</td>`;
 	$('#fio').html(out);
 
-	str = `<a href="index.html" id="${id}" class="list-group-item list-group-item-action">Общая информация</a>\n
+	str =`<a href="index.html" id="${id}" class="list-group-item list-group-item-action">Общая информация</a>\n
 	      <a href="progress.html?${id}" id="${id}" onclick="marksOnClick(this.id)" class="list-group-item list-group-item-action">Успеваемость</a>\n
-		  <a href="achieve.html?${id}" id="${id}" onclick="achivementOnClick(this.id)" class="list-group-item list-group-item-action">Достижения</a>\n
+			
 		  <a href="recomendation.html" class="list-group-item list-group-item-action">Рекомендации</a>\n
-      	  <a href="resume.html" class="list-group-item list-group-item-action">Резюме</a>\n`;
-	$('.list-group').html(str);	
+      	  <a href="resume.html" class="list-group-item list-group-item-action">Резюме</a>\n
+      	<a class="list-group-item">Достижения</a>\n
+		<ul>
+		<a id="${id}"  onclick="studyOnClick(this.id)" class="list-group-item list-group-item-action" href="study.html?${id}">Учебная деятельность</a>
+        
+		</ul>
+		<a href="403.html" class="list-group-item list-group-item-action">Список студентов</a>
+      	 `;
+	$('.list-group').html(str);
+        /*<a id="${id}"  class="list-group-item list-group-item-action" href="science.html">Научно-исследовательская деятельность</a>
+    	<a id="${id}"  class="list-group-item list-group-item-action" href="social.html">Общественная деятельность</a>
+    	<a id="${id}"  class="list-group-item list-group-item-action" href="culture.html">Культурно-творческая деятельность</a>
+    	<a id="${id}"  class="list-group-item list-group-item-action" href="sport.html">Спортивная деятельность</a>*/
 }
 
 function marksOnClick(id) {
@@ -46,4 +57,18 @@ function achivementOnClick(id) {
     		files.push(f[i]);
 	}   // for(var i = 0; ....
 	localStorage.setItem("session_achieve", JSON.stringify(files));
+}
+function studyOnClick(id) {
+	console.log("studyOnClick");
+	var j = JSON.parse(localStorage.getItem("jsonObj_data"));
+ 	console.log(j);
+  	var f = j['files'];
+	console.log(f);
+  
+  	var cat1 = [];
+  	for(var i = 0; i < f.length; i++)
+  		if((f[i].edecanat_id == id) && (f[i].category == 1))
+  			cat1.push(f[i]);
+  	localStorage.setItem("session_study", JSON.stringify(cat1));
+
 }
