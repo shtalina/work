@@ -2,7 +2,7 @@
   <h2>Факультеты, институты</h2>
   <br>
   <div class="container " ng-app="demo" ng-controller="faculty">
-  <div class="accordion accordion-flush" id="accordionFlushExample" action = "application/controllers/ListController.php" method="GET">
+  <div class="accordion accordion-flush" id="accordionFlushExample" action = "application/controllers/ListController.php" method="POST">
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
